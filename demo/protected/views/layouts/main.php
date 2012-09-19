@@ -91,25 +91,67 @@ mixpanel.init("733930f08f73894be317b7fdbfd15229");</script><!-- end Mixpanel -->
 
 <div class="container">
 
-	<?php $this->beginWidget('bootstrap.widgets.TbHeroUnit', array(
-		'heading'=>Yii::app()->name,
-	)); ?>
-		<p>
-			Bringing together the <?php echo CHtml::link('Yii PHP framework', 'http://www.yiiframework.com'); ?> and
-			<?php echo CHtml::link('Twitter Bootstrap', 'http://twitter.github.com/bootstrap/'); ?>.
-        </p>
-        <p>
-			<?php echo CHtml::link('Yii-Bootstrap', 'http://www.yiiframework.com/extension/bootstrap/'); ?>
-			is an extension for Yii that provides a wide range of widgets that allow developers to easily use Bootstrap with Yii.
-			All widgets have been developed following Yii's conventions and work seamlessly together with Bootstrap and its jQuery plugins.
-		</p>
-	<?php $this->endWidget(); ?>
+	<div class="row">
+		<div class="span9">
 
-	<?php if (!empty($this->breadcrumbs)):?>
-		<?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?>
-	<?php endif?>
+			<?php $this->beginWidget('bootstrap.widgets.TbHeroUnit', array(
+				'heading'=>Yii::app()->name,
+			)); ?>
+				<p>
+					Bringing together the <?php echo CHtml::link('Yii PHP framework', 'http://www.yiiframework.com'); ?> and
+					<?php echo CHtml::link('Twitter Bootstrap', 'http://twitter.github.com/bootstrap/'); ?>.
+				</p>
+				<p>
+					<?php echo CHtml::link('Yii-Bootstrap', 'http://www.yiiframework.com/extension/bootstrap/'); ?>
+					is an extension for Yii that provides a wide range of widgets that allow developers to easily use Bootstrap with Yii.
+					All widgets have been developed following Yii's conventions and work seamlessly together with Bootstrap and its jQuery plugins.
+				</p>
+			<?php $this->endWidget(); ?>
+
+			<?php if (!empty($this->breadcrumbs)):?>
+				<?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+					'links'=>$this->breadcrumbs,
+				)); ?>
+			<?php endif?>
+
+		</div>
+
+		<div class="span3">
+			<div class="donate">
+
+				<h3>Support development</h3>
+
+				<p>Would you like to say thanks for the time and effort put on this project? Consider donating.</p>
+
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+					<input type="hidden" name="cmd" value="_s-xclick">
+					<input type="hidden" name="hosted_button_id" value="YYJJSWSMN62WU">
+					<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+					<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				</form>
+
+				<hr />
+
+				<p>Would you like to support the development of this project on a monthly basis? Consider subscribing.</p>
+
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+					<input type="hidden" name="cmd" value="_s-xclick">
+					<input type="hidden" name="hosted_button_id" value="7UFJKA5YAJR8G">
+					<table>
+						<tr><td><input type="hidden" name="on0" value="Donate"></td></tr><tr><td><select name="os0">
+						<option value="Option 1">€5.00 EUR (monthly)</option>
+						<option value="Option 2">€10.00 EUR (monthly)</option>
+						<option value="Option 3">€20.00 EUR (monthly)</option>
+					</select> </td></tr>
+					</table>
+					<input type="hidden" name="currency_code" value="EUR">
+					<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribe_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+					<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				</form>
+
+			</div>
+		</div>
+	</div>
 
 	<?php echo $content; ?>
 
