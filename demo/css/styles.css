@@ -240,11 +240,16 @@ p {
   padding:6px 0;
 }
 .subnav.navbar-fixed-top { top:40px; }
-footer .powered {
+.footer .powered {
   color:#888888;
   margin-bottom:20px;
 }
-footer .copy { color:#666666; }
+.footer .copy { color:#666666; }
+.donate .or {
+  font-size:16px;
+  font-weight:bold;
+  text-align:center;
+}
 span.required { color:#ff0000; }
 .popover h3.popover-title { margin-bottom:0; }
 section { padding-top:80px; }

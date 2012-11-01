@@ -759,7 +759,6 @@ Yii::app()->clientScript->registerScript('siteIndex', "
 				'htmlOptions'=>array('class'=>'pull-right'),
 				'items'=>array(
 					array('label'=>'Link', 'url'=>'#'),
-					'---',
 					array('label'=>'Dropdown', 'url'=>'#', 'items'=>array(
 						array('label'=>'Action', 'url'=>'#'),
 						array('label'=>'Another action', 'url'=>'#'),
@@ -803,7 +802,6 @@ Yii::app()->clientScript->registerScript('siteIndex', "
 				'htmlOptions'=>array('class'=>'pull-right'),
 				'items'=>array(
 					array('label'=>'Link', 'url'=>'#'),
-					'---',
 					array('label'=>'Dropdown', 'url'=>'#', 'items'=>array(
 						array('label'=>'Action', 'url'=>'#'),
 						array('label'=>'Another action', 'url'=>'#'),
@@ -846,7 +844,6 @@ Yii::app()->clientScript->registerScript('siteIndex', "
 			'htmlOptions'=>array('class'=>'pull-right'),
 			'items'=>array(
 				array('label'=>'Link', 'url'=>'#'),
-				'---',
 				array('label'=>'Dropdown', 'url'=>'#', 'items'=>array(
 					array('label'=>'Action', 'url'=>'#'),
 					array('label'=>'Another action', 'url'=>'#'),
