@@ -1,25 +1,4 @@
-.clearfix { *zoom:1; }
-.clearfix:before, .clearfix:after {
-  display:table;
-  content:"";
-  line-height:0;
-}
-.clearfix:after { clear:both; }
-.hide-text {
-  font:0 / 0 a;
-  color:transparent;
-  text-shadow:none;
-  background-color:transparent;
-  border:0;
-}
-.input-block-level {
-  display:block;
-  width:100%;
-  min-height:30px;
-  -webkit-box-sizing:border-box;
-  -moz-box-sizing:border-box;
-  box-sizing:border-box;
-}
+@import url("../../lib/bootstrap/less/mixins.less");
 .php-hl-default { color:Black; }
 .php-hl-code { color:Gray; }
 .php-hl-brackets { color:Olive; }
@@ -240,15 +219,13 @@ p {
   padding:6px 0;
 }
 .subnav.navbar-fixed-top { top:40px; }
-.footer .powered {
+footer .powered {
   color:#888888;
   margin-bottom:20px;
 }
-.footer .copy { color:#666666; }
-.donate .or {
-  font-size:16px;
-  font-weight:bold;
-  text-align:center;
+footer .copy {
+  color:#666666;
+  text-align:right;
 }
 span.required { color:#ff0000; }
 .popover h3.popover-title { margin-bottom:0; }
@@ -274,9 +251,6 @@ section a.top {
   background:#fcfcfc;
   border-color:#eeeeee transparent #eeeeee;
   font-family:"Menlo", "Consolas", "Courier New", Courier, mono;
-  -webkit-border-radius:0;
-  -moz-border-radius:0;
-  border-radius:0;
 }
 .maintenance .hero-unit { text-align:center; }
 .maintenance .hero-unit p { text-align:inherit; }

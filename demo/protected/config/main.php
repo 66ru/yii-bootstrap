@@ -1,10 +1,10 @@
 <?php
 
 // Set the path of Bootstrap to be the root of the project.
-Yii::setPathOfAlias('bootstrap', realpath(dirname(__FILE__).'/../../../'));
+Yii::setPathOfAlias('bootstrap', realpath(__DIR__.'/../../../'));
 
 $config = array(
-	'basePath'=>realpath(dirname(__FILE__).'/..'),
+	'basePath'=>realpath(__DIR__.'/..'),
 	'name'=>'Yii-Bootstrap',
 
 	'preload'=>array(
@@ -29,7 +29,6 @@ $config = array(
 	'components'=>array(
 		'bootstrap'=>array(
 			'class'=>'bootstrap.components.Bootstrap',
-			'responsiveCss'=>true,
 		),
 		'errorHandler'=>array(
 			'errorAction'=>'site/error',

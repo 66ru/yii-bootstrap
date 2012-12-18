@@ -7,13 +7,12 @@
 		'title'=>array('class'=>'ext.seo.widgets.SeoTitle', 'separator'=>' :: '),
 	)); ?>
 	<link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/favicon.ico">
+	<?php Yii::app()->bootstrap->registerAllCss(); ?>
+	<?php Yii::app()->bootstrap->registerCoreScripts(); ?>
 	<?php Yii::app()->clientScript->registerCssFile(Yii::app()->request->baseUrl.'/css/styles.css'); ?>
 	<!--[if lt IE 9]>
 		<script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-<!-- start Mixpanel --><script type="text/javascript">(function(d,c){var a,b,g,e;a=d.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===d.location.protocol?"https:":"http:")+'//api.mixpanel.com/site_media/js/api/mixpanel.2.js';b=d.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b);c._i=[];c.init=function(a,d,f){var b=c;"undefined"!==typeof f?b=c[f]=[]:f="mixpanel";g="disable track track_links track_forms register register_once unregister identify name_tag set_config".split(" ");for(e=0;e<
-g.length;e++)(function(a){b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,0)))}})(g[e]);c._i.push([a,d,f])};window.mixpanel=c})(document,[]);
-mixpanel.init("733930f08f73894be317b7fdbfd15229");</script><!-- end Mixpanel -->
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
 		_gaq.push(['_setAccount', 'UA-29040179-1']);
@@ -59,7 +58,7 @@ mixpanel.init("733930f08f73894be317b7fdbfd15229");</script><!-- end Mixpanel -->
 		array(
 			'class'=>'bootstrap.widgets.TbMenu',
 			'items'=>array(
-				array('label'=>'Demo', 'url'=>Yii::app()->homeUrl,
+				array('label'=>'Docs', 'url'=>Yii::app()->homeUrl,
 						'active'=>Yii::app()->controller->id === 'site' && Yii::app()->controller->action->id === 'index'),
 				array('label'=>'Setup', 'url'=>array('site/setup')),
 			),
@@ -80,7 +79,7 @@ mixpanel.init("733930f08f73894be317b7fdbfd15229");</script><!-- end Mixpanel -->
 		array(
 			'class'=>'bootstrap.widgets.TbMenu',
 			'items'=>array(
-				array('label'=>'Bootstrap Docs', 'url'=>'http://twitter.github.com/bootstrap', 'linkOptions'=>array('target'=>'_blank')),
+				array('label'=>'Bootstrap Home', 'url'=>'http://www.getbootstrap.com', 'linkOptions'=>array('target'=>'_blank')),
 				array('label'=>'Fork me on Bitbucket', 'url'=>'http://www.bitbucket.org/Crisu83/yii-bootstrap', 'linkOptions'=>array('target'=>'_blank')),
 				array('label'=>'Follow me on Twitter', 'url'=>'http://www.twitter.com/Crisu83', 'linkOptions'=>array('target'=>'_blank')),
 			),
@@ -159,20 +158,30 @@ mixpanel.init("733930f08f73894be317b7fdbfd15229");</script><!-- end Mixpanel -->
 
 	<footer>
 
-		<p class="powered">
-			Powered by <?php echo CHtml::link('Yii PHP framework', 'http://www.yiiframework.com', array('target'=>'_blank')); ?> /
-			<?php echo CHtml::link('jQuery', 'http://www.jquery.com', array('target'=>'_blank')); ?> /
-			<?php echo CHtml::link('Yii-Bootstrap', 'http://www.yiiframework.com/extension/bootstrap', array('target'=>'_blank')); ?> /
-			<?php echo CHtml::link('Yii-LESS', 'http://www.yiiframework.com/extension/less', array('target'=>'_blank')); ?>  /
-			<?php echo CHtml::link('Yii-SEO', 'http://www.yiiframework.com/extension/seo', array('target'=>'_blank')); ?> /
-			<?php echo CHtml::link('Yii-Facebook', '#', array('rel'=>'tooltip', 'title'=>'Link available soon')); ?> /
-			<?php echo CHtml::link('Bootstrap', 'http://twitter.github.com/bootstrap', array('target'=>'_blank')); ?> /
-			<?php echo CHtml::link('LESS', 'http://www.lesscss.org', array('target'=>'_blank')); ?>
-		</p>
+		<div class="row">
 
-		<p class="copy">
-			&copy; Christoffer Niska <?php echo date('Y'); ?>
-		</p>
+			<div class="span6">
+
+				<p class="powered">
+					Powered by <?php echo CHtml::link('Yii', 'http://www.yiiframework.com', array('target'=>'_blank')); ?> /
+					<?php echo CHtml::link('Yii-Bootstrap', 'http://www.yiiframework.com/extension/bootstrap', array('target'=>'_blank')); ?> /
+					<?php echo CHtml::link('Yii-SEO', 'http://www.yiiframework.com/extension/seo', array('target'=>'_blank')); ?> /
+					<?php echo CHtml::link('Bootstrap', 'http://twitter.github.com/bootstrap', array('target'=>'_blank')); ?> /
+					<?php echo CHtml::link('jQuery', 'http://www.jquery.com', array('target'=>'_blank')); ?> /
+					<?php echo CHtml::link('LESS', 'http://www.lesscss.org', array('target'=>'_blank')); ?>
+				</p>
+
+			</div>
+
+			<div class="span6">
+
+				<p class="copy">
+					&copy; Christoffer Niska <?php echo date('Y'); ?>
+				</p>
+
+			</div>
+
+		</div>
 
 	</footer>
 
