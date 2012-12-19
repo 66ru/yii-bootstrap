@@ -34,6 +34,10 @@ class Bootstrap extends CApplicationComponent
 	 * @since 0.9.8
 	 */
 	public $plugins = array();
+	/**
+	 * @var boolean indicates whether assets should be republished on every request.
+	 */
+	public $publishAssets = YII_DEBUG;
 
 	protected $_assetsUrl;
 
@@ -296,7 +300,7 @@ class Bootstrap extends CApplicationComponent
 		else
 		{
 			$assetsPath = Yii::getPathOfAlias('bootstrap.assets');
-			$assetsUrl = Yii::app()->assetManager->publish($assetsPath, true, -1, YII_DEBUG);
+			$assetsUrl = Yii::app()->assetManager->publish($assetsPath, true, -1, $this->publishAssets);
 			return $this->_assetsUrl = $assetsUrl;
 		}
 	}
