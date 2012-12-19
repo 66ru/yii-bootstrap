@@ -138,7 +138,15 @@ class TbButton extends CWidget
 			$classes[] = 'active';
 
 		if ($this->disabled)
+		{
+			$disableTypes = array(self::BUTTON_BUTTON, self::BUTTON_SUBMIT, self::BUTTON_RESET,
+				self::BUTTON_AJAXBUTTON, self::BUTTON_AJAXSUBMIT, self::BUTTON_INPUTBUTTON, self::BUTTON_INPUTSUBMIT);
+
+			if (in_array($this->buttonType, $disableTypes))
+				$this->htmlOptions['disabled'] = 'disabled';
+
 			$classes[] = 'disabled';
+		}
 
         if (!isset($this->url) && isset($this->htmlOptions['href']))
         {
