@@ -13,41 +13,49 @@ $this->addMetaProperty('fb:app_id', Yii::app()->fb->appID);
 
 	<h2>Setup</h2>
 
-	<p>Download the latest release.</p>
+	<p>Download the latest release from Yii extensions by following the link below:</p>
 
 	<p>
-		<?php echo CHtml::link('<i class="icon-share icon-white"></i> Get Yii-Bootstrap from Yii extensions',
-				'http://www.yiiframework.com/extension/bootstrap/', array('class'=>'btn btn-primary btn-large', 'target'=>'_blank')); ?>
+		<?php $this->widget('bootstrap.widgets.TbButton', array(
+			'type'=>'primary',
+			'size'=>'large',
+			'icon'=>'download-alt white',
+			'label'=>'Download Yii-Bootstrap',
+			'url'=>'http://www.yiiframework.com/extension/bootstrap/',
+			'htmlOptions'=>array('target'=>'_blank'),
+		)); ?>
 	</p>
 
-	<p>Unzip the extension under <strong>protected/extensions/bootstrap</strong> and add the following code to your application configuration:</p>
+	<p>Unzip the extension under <strong>protected/extensions/bootstrap</strong> and modify your application configuration accordingly:</p>
+
+	<p>If you wish to use the provided Bootstrap theme copy the <strong>theme</strong> directory to your themes directory.</p>
 
 <?php echo $parser->safeTransform("~~~
 [php]
-'preload'=>array(
-    .....
-    'bootstrap', // preload the bootstrap component
-),
-'modules'=>array(
-    .....
-    'gii'=>array(
-        .....
-        'generatorPaths'=>array(
-            'bootstrap.gii',
-        ),
-    ),
-),
-'components'=>array(
-    .....
-    'bootstrap'=>array(
-        'class'=>'ext.bootstrap.components.Bootstrap', // assuming you extracted bootstrap under extensions
-    ),
-),
+// Define a path alias for the Bootstrap extension as it's used internally.
+// In this example we assume that you unzipped the extension under protected/extensions.
+Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
+
+return array(
+	'theme'=>'bootstrap', // requires you to copy the theme under your themes directory
+	'modules'=>array(
+		'gii'=>array(
+			'generatorPaths'=>array(
+				'bootstrap.gii',
+			),
+		),
+	),
+	'components'=>array(
+		'bootstrap'=>array(
+			'class'=>'bootstrap.components.Bootstrap',
+		),
+	),
+);
 ~~~"); ?>
 
 	<p>
 		You're done! Now you can start using Bootstrap in your application. For examples on how to use the widgets please visit the
-		<?php echo CHtml::link('demo page', array('site/index')); ?>.
+		<?php echo CHtml::link('docs', array('site/index')); ?>.
 	</p>
 
 </section>

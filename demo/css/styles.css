@@ -219,6 +219,7 @@ p {
   padding:6px 0;
 }
 .subnav.navbar-fixed-top { top:40px; }
+.donate h3 { margin-top:0; }
 footer .powered {
   color:#888888;
   margin-bottom:20px;

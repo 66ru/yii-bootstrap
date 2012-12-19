@@ -36,7 +36,7 @@ class TbAffix extends CWidget
 	 */
 	public function init()
 	{
-		echo CHtml::tag($this->tagName, $this->htmlOptions);
+		echo CHtml::openTag($this->tagName, $this->htmlOptions);
 	}
 
 	/**

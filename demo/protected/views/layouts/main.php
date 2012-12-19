@@ -53,6 +53,7 @@
 <?php $this->widget('bootstrap.widgets.TbNavbar',array(
 	'type'=>'inverse',
 	'brand'=>CHtml::encode(Yii::app()->name),
+	'brandUrl'=>false,
 	'collapse'=>true,
 	'items'=>array(
 		array(
