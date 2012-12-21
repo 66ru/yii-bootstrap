@@ -37,7 +37,7 @@ class Bootstrap extends CApplicationComponent
 	/**
 	 * @var boolean indicates whether assets should be republished on every request.
 	 */
-	public $publishAssets = YII_DEBUG;
+	public $forceCopyAssets = false;
 
 	protected $_assetsUrl;
 
@@ -96,7 +96,6 @@ class Bootstrap extends CApplicationComponent
 	/**
 	 * Registers the Bootstrap JavaScript.
 	 * @param int $position the position of the JavaScript code.
-	 * @see CClientScript::registerScriptFile
 	 */
 	protected function registerJS($position = CClientScript::POS_HEAD)
 	{
@@ -105,6 +104,16 @@ class Bootstrap extends CApplicationComponent
 		$cs->registerCoreScript('jquery');
 		$filename = YII_DEBUG ? 'bootstrap.js' : 'bootstrap.min.js';
 		$cs->registerScriptFile($this->getAssetsUrl().'/js/'.$filename, $position);
+	}
+
+	/**
+	 * Registers all Bootstrap CSS and JavaScript.
+	 * @since 2.1.0
+	 */
+	public function register()
+	{
+		$this->registerAllCss();
+		$this->registerCoreScripts();
 	}
 
 	/**
@@ -264,26 +273,20 @@ class Bootstrap extends CApplicationComponent
 	 * @param string $defaultSelector the default CSS selector
 	 * @since 0.9.8
 	 */
-	protected function registerPlugin($name, $selector = null, $options = array(), $defaultSelector = null)
+	protected function registerPlugin($name, $selector = null, $options = array())
 	{
-		if (!isset($selector) && empty($options))
+		// Initialization from extension configuration.
+		$config = isset($this->plugins[$name]) ? $this->plugins[$name] : array();
+
+		if ($selector === null && isset($config['selector']))
+			$selector = $config['selector'];
+
+		if (isset($config['options']))
+			$options = !empty($options) ? CMap::mergeArray($options, $config['options']) : $config['options'];
+
+		if ($selector !== null)
 		{
-			// Initialization from extension configuration.
-			$config = isset($this->plugins[$name]) ? $this->plugins[$name] : array();
-
-			if (isset($config['selector']))
-				$selector = $config['selector'];
-
-			if (isset($config['options']))
-				$options = !empty($options) ? CMap::mergeArray($config['options'], $options) : $config['options'];
-
-			if (!isset($selector))
-				$selector = $defaultSelector;
-		}
-
-		if (isset($selector))
-		{
-			$key = __CLASS__.'.'.md5($name.$selector.serialize($options).$defaultSelector);
+			$key = __CLASS__.'.'.md5($name.$selector.serialize($options));
 			$options = !empty($options) ? CJavaScript::encode($options) : '';
 			Yii::app()->clientScript->registerScript($key, "jQuery('{$selector}').{$name}({$options});");
 		}
@@ -300,7 +303,7 @@ class Bootstrap extends CApplicationComponent
 		else
 		{
 			$assetsPath = Yii::getPathOfAlias('bootstrap.assets');
-			$assetsUrl = Yii::app()->assetManager->publish($assetsPath, true, -1, $this->publishAssets);
+			$assetsUrl = Yii::app()->assetManager->publish($assetsPath, true, -1, $this->forceCopyAssets);
 			return $this->_assetsUrl = $assetsUrl;
 		}
 	}
@@ -311,6 +314,6 @@ class Bootstrap extends CApplicationComponent
      */
     public function getVersion()
     {
-        return '2.0.0';
+        return '2.1.0';
     }
 }
