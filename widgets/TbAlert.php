@@ -113,11 +113,13 @@ class TbAlert extends CWidget
 
 				echo CHtml::openTag('div', $alert['htmlOptions']);
 
-				if (!isset($alert['closeText']))
-                    $alert['closeText'] = $this->closeText;
+				if ($this->closeText !== false && !isset($alert['closeText']))
+					$alert['closeText'] = $this->closeText;
+				else
+					$alert['closeText'] = false;
 
 				if ($alert['closeText'] !== false)
-					echo '<a href="#" class="close" data-dismiss="alert">'.$alert['closeText'].'</a>';
+					echo '<a class="close" data-dismiss="alert">'.$alert['closeText'].'</a>';
 
 				echo Yii::app()->user->getFlash($type);
 
